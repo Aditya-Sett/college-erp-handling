@@ -1,0 +1,41 @@
+Analysis_Service/
+│
+├── app/
+│   ├── __init__.py          # App factory
+│   ├── config.py            # Configuration settings
+│   │
+│   ├── db/
+│   │   └── mongo.py         # DB connection establish
+│   │
+│   ├── routes/              # All API routes
+│   │   ├── __init__.py
+│   │   ├── curriculum_routes.py
+│   │   └── curriculum_upload_routes.py
+│   │
+│   ├── services/            # Business logic
+│   │   ├── __init__.py
+│   │   ├── curriculum_excel_parser_service.py
+│   │   └── curriculum_excel_service.py
+│   │
+│   ├── models/              # Database models
+│   │   ├── __init__.py
+│   │
+│   ├── utils/               # Helper functions
+│   │   ├── __init__.py
+│   │   └── semester_naming.py
+│   │
+│   └── extensions.py        # DB, JWT, CORS, etc.
+│
+├── migrations/              # DB migrations (if using Flask-Migrate) -- It is not integrated for now
+│
+├── tests/                   # Unit & integration tests
+│   └── test.py              # For running this file write command  python tests/test.py
+│
+├── .env                     # Environment variables
+├── .env.example             # Example of Environment variables uses
+├── .gitignore               # Ignore the secure files to push
+├── requirements.txt         # Requirement packages to install
+├── run.py                   # Entry point
+└── README.md
+
+For starting write command    python run.py
