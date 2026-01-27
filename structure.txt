@@ -34,8 +34,9 @@ Analysis_Service/
 ├── .env                     # Environment variables
 ├── .env.example             # Example of Environment variables uses
 ├── .gitignore               # Ignore the secure files to push
+├── guidance.txt             # Initial guidance to set up the project files
 ├── requirements.txt         # Requirement packages to install
 ├── run.py                   # Entry point
 └── README.md
 
-For starting write command    python run.py
+To up the server write command    python run.py

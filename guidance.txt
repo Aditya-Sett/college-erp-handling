@@ -1,0 +1,12 @@
+1.  Create a new folder (eg. Analysis_Service)
+2.  Open PyCharm
+3.  Click on File
+4.  Click on New Project...
+5.  Set the Location (eg. D.\Analysis_Service)
+6.  Click on create
+7.  Wait for 2 mins
+8.  Open the Terminal
+9.  Type the command and hit enter      git init
+10. Type the command and hit enter      git remote add origin https://github.com/Aditya-Sett/college-erp-handling.git
+11. Type the command and hit enter      git pull origin main
+12. Type the command and hit enter      pip install -r req.txt
