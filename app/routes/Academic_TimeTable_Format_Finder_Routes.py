@@ -3,7 +3,7 @@ from app.services.Academic_TimeTable_Format_Finder_Service import Academic_TimeT
 
 Academic_TimeTable_Format_Finder_bp = Blueprint("Academic_TimeTable_Format_Finder_Routes", __name__)
 
-@Academic_TimeTable_Format_Finder_bp.route("/format-finder", methods=["POST"])
+@Academic_TimeTable_Format_Finder_bp.route("/slots-finder", methods=["POST"])
 def get_academic_timetable():
 
     try:

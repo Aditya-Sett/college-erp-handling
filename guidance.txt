@@ -10,3 +10,5 @@
 10. Type the command and hit enter      git remote add origin https://github.com/Aditya-Sett/college-erp-handling.git
 11. Type the command and hit enter      git pull origin main
 12. Type the command and hit enter      pip install -r req.txt
+
+NOTE : to stop tracking unwanted files use git command    git rm -r --cached <file_path>

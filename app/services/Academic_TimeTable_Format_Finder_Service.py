@@ -5,7 +5,7 @@ class Academic_TimeTable_Format_Finder_Service:
     def get_academic_timetable(college_name):
 
         try:
-            collection = db["Academic_timetable"]
+            collection = db["Academic_timetable_slots"]
 
             timetable = list(collection.find(
                 {"college_name": college_name},
