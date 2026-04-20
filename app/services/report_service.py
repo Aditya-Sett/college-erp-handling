@@ -52,6 +52,7 @@ class ReportService:
 
                     # 4. Get counts
                     total_students = get_total_students(department,year,sem)
+                    print(f"Total students: {total_students}")
 
                     total_classes = db.attendancecodes.count_documents({
                         "department": department,
@@ -59,6 +60,7 @@ class ReportService:
                         "sem": sem,
                         "subject": subject
                     })
+                    print(f"Total classes: {total_classes}")
 
                     total_attendance = db.attendancerecords.count_documents({
                         "department": department,
@@ -66,6 +68,7 @@ class ReportService:
                         "sem": sem,
                         "subject": subject
                     })
+                    print(f"Total attendance: {total_attendance}")
 
                     # 5. Calculate %
                     if total_students > 0 and total_classes > 0:
