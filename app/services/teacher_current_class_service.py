@@ -5,7 +5,7 @@ class TeacherCurrentClassService:
     def get_teacher_current_class(teacher_id, day, time):
         try:
             collection = db["teacher_schedule"]
-            teacher = collection.find_one({"teacherId": teacher_id})
+            teacher = collection.find_one({"teacher_id": teacher_id})
 
             if not teacher:
                 return {
