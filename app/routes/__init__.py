@@ -10,6 +10,8 @@ from app.routes.teacher_schedule_routes import teacher_schedule_bp
 from app.routes.teacher_current_class_routes import teacher_current_class_bp
 from app.routes.update_student_enrollment_count_routes import update_student_enrollment_count_bp
 from app.routes.reports_routes import reports_bp
+from app.routes.get_attendance_by_teacher_and_date_routes import get_attendance_by_teacher_and_date_bp
+from app.routes.attendance_routes import attendance_bp
 
 def register_routes(app):
     app.register_blueprint(curriculum_bp, url_prefix="/api/curriculum")
@@ -22,3 +24,5 @@ def register_routes(app):
     app.register_blueprint(update_student_enrollment_count_bp, url_prefix="/api/enrollment")
     app.register_blueprint(reports_bp, url_prefix="/api/reports")
     app.register_blueprint(health_check_bp, url_prefix="/api/analysis")
+    app.register_blueprint(get_attendance_by_teacher_and_date_bp, url_prefix="/api/attendancecodes")
+    app.register_blueprint(attendance_bp, url_prefix="/api/attendance")
