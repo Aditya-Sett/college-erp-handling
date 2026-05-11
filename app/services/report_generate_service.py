@@ -3,9 +3,11 @@ from app.db.mongo import db
 import requests
 from app.utils.report_utils import get_total_students
 from app.connection.connection import BASE_AUTH_URL
+from datetime import datetime, timedelta
 
 attendancecodes = db["attendancecodes"]
 attendancerecords = db["attendancerecords"]
+leave_approved_collection = db["leave_approved"]
 
 AUTH_SERVICE_URL = BASE_AUTH_URL
 
@@ -89,6 +91,29 @@ class ReportGenerator:
             }))
             print("records:", records)
 
+            approved_leaves = list(leave_approved_collection.find({
+                "department": department,
+                "academicYear": academicYear,
+                "sem": sem
+            }))
+
+            leave_map = {}
+
+            for leave in approved_leaves:
+                student_id = leave["studentId"]
+                start_date = leave["start_date"]
+                end_date = leave["end_date"]
+                category = leave["category"]
+
+                # Convert to datetime.date
+                start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+                end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
+
+                current = start_date
+                while current <= end_date:
+                    leave_map[(student_id, current)] = category
+                    current += timedelta(days=1)
+
             # 4️⃣ Build FAST lookup map
             # Key = (studentId, session_time_bucket)
             attendance_map = {}
@@ -121,9 +146,16 @@ class ReportGenerator:
                     print("session_time", session_time)
                     key = session_time.strftime("%d-%m-%y %H:%M")
 
+                    session_date = session_time.date()
+
                     if (student_id, session_time) in attendance_map:
                         row[key] = "Present"
                         present_count += 1
+
+                    elif (student_id, session_date) in leave_map:
+                        row[key] = leave_map[(student_id, session_date)]  # e.g. "Medical"
+                        present_count += 1  #  COUNT AS PRESENT
+
                     else:
                         row[key] = "Absent"
 

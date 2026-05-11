@@ -13,6 +13,11 @@ from app.routes.reports_routes import reports_bp
 from app.routes.get_attendance_by_teacher_and_date_routes import get_attendance_by_teacher_and_date_bp
 from app.routes.attendance_routes import attendance_bp
 from app.routes.report_genrate_toutes import report_generate_bp
+from app.routes.leave_request_routes import leave_request_bp
+from app.routes.leave_request_show_routes import leave_request_show_bp
+from app.routes.leave_approval_unapproval_routes import leave_approval_unapproval_bp
+from app.routes.student_leave_history_routes import student_leave_history_bp
+from app.routes.file_routes import file_bp
 
 def register_routes(app):
     app.register_blueprint(curriculum_bp, url_prefix="/api/curriculum")
@@ -28,3 +33,8 @@ def register_routes(app):
     app.register_blueprint(get_attendance_by_teacher_and_date_bp, url_prefix="/api/attendancecodes")
     app.register_blueprint(attendance_bp, url_prefix="/api/attendance")
     app.register_blueprint(report_generate_bp, url_prefix="/api/attendance")
+    app.register_blueprint(leave_request_bp, url_prefix="/api/analysis")
+    app.register_blueprint(leave_request_show_bp, url_prefix="/api/analysis")
+    app.register_blueprint(leave_approval_unapproval_bp, url_prefix="/api/analysis")
+    app.register_blueprint(student_leave_history_bp, url_prefix="/api/analysis")
+    app.register_blueprint(file_bp, url_prefix="/api/analysis")
